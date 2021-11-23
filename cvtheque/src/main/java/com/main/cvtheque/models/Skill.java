@@ -3,12 +3,13 @@ package com.main.cvtheque.models;
 import com.sun.istack.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "skills")
-public class Skills {
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,9 +23,9 @@ public class Skills {
                     CascadeType.MERGE
             },
             mappedBy = "skills")
-    private ArrayList<CV> cvs = new ArrayList<>();
+    private List<CV> cvs = new ArrayList<>();
 
-    public Skills(int id, String name) {
+    public Skill(int id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -18,6 +19,11 @@ public class CV {
     @NotNull
     private String domain;
 
+    //client
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="client_id")
+    private Client client;
+
     //skills
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -27,19 +33,19 @@ public class CV {
     @JoinTable(name = "cv_skills",
             joinColumns = { @JoinColumn(name = "cv_id") },
             inverseJoinColumns = { @JoinColumn(name = "skill_id") })
-    private ArrayList<Skills> skills = new ArrayList<>();
+    private List<Skill> skills = new ArrayList<>();
 
     //experience
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "cv")
-    private ArrayList<WorkExperience> workExperience = new ArrayList<>();
+    private List<WorkExperience> workExperiences = new ArrayList<>();
 
     //education
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "cv")
-    private ArrayList<Education> educations = new ArrayList<>();
+    private List<Education> educations = new ArrayList<>();
 
     public CV(int id, String domain) {
         this.id = id;

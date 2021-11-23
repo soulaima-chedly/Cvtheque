@@ -28,7 +28,7 @@ public class WorkExperience {
     @NotNull
     private Date endingDate;
 
-    private ArrayList<String> acheivmenets;
+    private ArrayList<String> achievements = new ArrayList<>();
 
     //CV
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -42,13 +42,13 @@ public class WorkExperience {
                           String companyName,
                           Date begningDate,
                           Date endingDate,
-                          ArrayList<String> acheivmenets) {
+                          ArrayList<String> achievements) {
         this.id = id;
         this.role = role;
         this.companyName = companyName;
         this.begningDate = begningDate;
         this.endingDate = endingDate;
-        this.acheivmenets = acheivmenets;
+        this.achievements = achievements;
     }
 
     public int getId() {
@@ -87,11 +87,11 @@ public class WorkExperience {
         this.endingDate = endingDate;
     }
 
-    public ArrayList<String> getAcheivmenets() {
-        return acheivmenets;
+    public ArrayList<String> getAchievements() {
+        return achievements;
     }
 
-    public void setAcheivmenets(ArrayList<String> acheivmenets) {
-        this.acheivmenets = acheivmenets;
+    public void setAchievements(ArrayList<String> achievements) {
+        this.achievements = achievements;
     }
 }

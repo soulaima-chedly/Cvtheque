@@ -1,0 +1,97 @@
+package com.main.cvtheque.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+
+@Entity
+@Table(name = "work_experiences")
+public class WorkExperience {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @NotNull
+    private String role;
+
+    @NotNull
+    private String companyName;
+
+    @NotNull
+    private Date begningDate;
+
+    @NotNull
+    private Date endingDate;
+
+    private ArrayList<String> acheivmenets;
+
+    //CV
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "cv_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private CV cv;
+
+    public WorkExperience(int id,
+                          String role,
+                          String companyName,
+                          Date begningDate,
+                          Date endingDate,
+                          ArrayList<String> acheivmenets) {
+        this.id = id;
+        this.role = role;
+        this.companyName = companyName;
+        this.begningDate = begningDate;
+        this.endingDate = endingDate;
+        this.acheivmenets = acheivmenets;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public Date getBegningDate() {
+        return begningDate;
+    }
+
+    public void setBegningDate(Date begningDate) {
+        this.begningDate = begningDate;
+    }
+
+    public Date getEndingDate() {
+        return endingDate;
+    }
+
+    public void setEndingDate(Date endingDate) {
+        this.endingDate = endingDate;
+    }
+
+    public ArrayList<String> getAcheivmenets() {
+        return acheivmenets;
+    }
+
+    public void setAcheivmenets(ArrayList<String> acheivmenets) {
+        this.acheivmenets = acheivmenets;
+    }
+}

@@ -1,4 +1,4 @@
-package com.main.cvtheque.models;
+package com.main.cvtheque.model;
 
 import com.sun.istack.NotNull;
 
@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Entreprise extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     private String matricule;
@@ -23,7 +23,7 @@ public class Entreprise extends User {
         super(name, email, password);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

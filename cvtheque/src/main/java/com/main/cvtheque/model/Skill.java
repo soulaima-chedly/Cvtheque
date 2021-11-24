@@ -1,4 +1,4 @@
-package com.main.cvtheque.models;
+package com.main.cvtheque.model;
 
 import com.sun.istack.NotNull;
 
@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     private String name;
@@ -25,12 +25,12 @@ public class Skill {
             mappedBy = "skills")
     private List<CV> cvs = new ArrayList<>();
 
-    public Skill(int id, String name) {
+    public Skill(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

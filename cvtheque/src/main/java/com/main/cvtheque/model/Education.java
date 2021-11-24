@@ -1,4 +1,4 @@
-package com.main.cvtheque.models;
+package com.main.cvtheque.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     private String schoolName;
@@ -34,7 +34,7 @@ public class Education {
     @JsonIgnore
     private CV cv;
 
-    public Education(int id, String schoolName, String degreeName, Date begningDate, Date endingDate) {
+    public Education(Long id, String schoolName, String degreeName, Date begningDate, Date endingDate) {
         this.id = id;
         this.schoolName = schoolName;
         this.degreeName = degreeName;
@@ -42,7 +42,7 @@ public class Education {
         this.endingDate = endingDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

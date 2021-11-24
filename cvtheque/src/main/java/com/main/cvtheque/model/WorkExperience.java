@@ -1,4 +1,4 @@
-package com.main.cvtheque.models;
+package com.main.cvtheque.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -14,7 +14,7 @@ import java.util.Date;
 public class WorkExperience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     private String role;
@@ -37,7 +37,7 @@ public class WorkExperience {
     @JsonIgnore
     private CV cv;
 
-    public WorkExperience(int id,
+    public WorkExperience(Long id,
                           String role,
                           String companyName,
                           Date begningDate,
@@ -51,7 +51,7 @@ public class WorkExperience {
         this.achievements = achievements;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

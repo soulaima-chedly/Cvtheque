@@ -1,4 +1,4 @@
-package com.main.cvtheque.models;
+package com.main.cvtheque.model;
 
 import javax.persistence.*;
 
@@ -7,13 +7,13 @@ import javax.persistence.*;
 public class Admin extends User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     public Admin(String name, String email, String password) {
         super(name, email, password);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CVRepository extends JpaRepository<CV, Long> {
+    //fff
 }

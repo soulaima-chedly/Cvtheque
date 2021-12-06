@@ -41,4 +41,12 @@ public class Skill {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<CV> getCvs() {
+        return cvs;
+    }
+
+    public void setCvs(List<CV> cvs) {
+        this.cvs = cvs;
+    }
 }

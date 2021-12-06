@@ -94,4 +94,12 @@ public class WorkExperience {
     public void setAchievements(ArrayList<String> achievements) {
         this.achievements = achievements;
     }
+
+    public CV getCv() {
+        return cv;
+    }
+
+    public void setCv(CV cv) {
+        this.cv = cv;
+    }
 }

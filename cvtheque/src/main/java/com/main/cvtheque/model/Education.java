@@ -77,4 +77,12 @@ public class Education {
     public void setEndingDate(Date endingDate) {
         this.endingDate = endingDate;
     }
+
+    public CV getCv() {
+        return cv;
+    }
+
+    public void setCv(CV cv) {
+        this.cv = cv;
+    }
 }

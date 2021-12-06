@@ -17,12 +17,17 @@ public class CV {
     private Long id;
 
     @NotNull
-    private String domain;
+    private String cvFileName;
+
+    //header
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="header_id")
+    private Header header;
 
     //client
-    @OneToOne(fetch = FetchType.LAZY)
+    /*@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="client_id")
-    private Client client;
+    private Client client;*/
 
     //skills
     @ManyToMany(fetch = FetchType.LAZY,
@@ -47,20 +52,32 @@ public class CV {
             mappedBy = "cv")
     private List<Education> educations = new ArrayList<>();
 
-    public CV(Long id, String domain) {
+    //entreprises
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "cvs")
+    private List<Entreprise> entreprises = new ArrayList<>();
+
+    public CV() { }
+
+    public CV(Long id, String cvFileName) {
         this.id = id;
-        this.domain = domain;
+        this.cvFileName = cvFileName;
+
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getDomain() {
-        return domain;
+    public String getCvFileName() {
+        return cvFileName;
     }
 
-    public void setDomain(String domain) {
-        this.domain = domain;
+    public void setCvFileName(String cvFileName) {
+        this.cvFileName = cvFileName;
     }
 }

@@ -18,8 +18,8 @@ public class Client extends User {
     private int age;
 
     //CV
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "client")
-    private CV cv;
+    /*@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "client")
+    private CV cv;*/
 
     public Client(String name, String email, String password) {
         super(name, email, password);

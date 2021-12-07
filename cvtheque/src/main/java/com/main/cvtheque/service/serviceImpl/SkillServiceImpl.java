@@ -20,7 +20,7 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public Skill createSkill(Long cvId, Skill skill) {
         return cvRepository.findById(cvId).map(cv -> {
-            skill.getCvs().add(cv);
+            skill.setCv(cv);
             return skillRepository.save(skill);
         }).orElseThrow(() -> new CVException("CV with id" + cvId + " not found"));
     }

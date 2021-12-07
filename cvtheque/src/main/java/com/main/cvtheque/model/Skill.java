@@ -1,9 +1,11 @@
 package com.main.cvtheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -17,13 +19,22 @@ public class Skill {
     @NotNull
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    /*@ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             },
             mappedBy = "skills")
-    private List<CV> cvs = new ArrayList<>();
+    private List<CV> cvs = new ArrayList<>();*/
+
+    //cv
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "cv_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private CV cv;
+
+    public Skill() {}
 
     public Skill(Long id, String name) {
         this.id = id;
@@ -42,11 +53,11 @@ public class Skill {
         this.name = name;
     }
 
-    public List<CV> getCvs() {
-        return cvs;
+    public CV getCv() {
+        return cv;
     }
 
-    public void setCvs(List<CV> cvs) {
-        this.cvs = cvs;
+    public void setCv(CV cv) {
+        this.cv = cv;
     }
 }

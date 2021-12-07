@@ -23,10 +23,10 @@ public class WorkExperience {
     private String companyName;
 
     @NotNull
-    private Date begningDate;
+    private String beginningDate;
 
     @NotNull
-    private Date endingDate;
+    private String endingDate;
 
     private ArrayList<String> achievements = new ArrayList<>();
 
@@ -37,16 +37,18 @@ public class WorkExperience {
     @JsonIgnore
     private CV cv;
 
+    public WorkExperience() {}
+
     public WorkExperience(Long id,
                           String role,
                           String companyName,
-                          Date begningDate,
-                          Date endingDate,
+                          String beginningDate,
+                          String endingDate,
                           ArrayList<String> achievements) {
         this.id = id;
         this.role = role;
         this.companyName = companyName;
-        this.begningDate = begningDate;
+        this.beginningDate = beginningDate;
         this.endingDate = endingDate;
         this.achievements = achievements;
     }
@@ -71,19 +73,19 @@ public class WorkExperience {
         this.companyName = companyName;
     }
 
-    public Date getBegningDate() {
-        return begningDate;
+    public String getBeginningDate() {
+        return beginningDate;
     }
 
-    public void setBegningDate(Date begningDate) {
-        this.begningDate = begningDate;
+    public void setBeginningDate(String beginningDate) {
+        this.beginningDate = beginningDate;
     }
 
-    public Date getEndingDate() {
+    public String getEndingDate() {
         return endingDate;
     }
 
-    public void setEndingDate(Date endingDate) {
+    public void setEndingDate(String endingDate) {
         this.endingDate = endingDate;
     }
 

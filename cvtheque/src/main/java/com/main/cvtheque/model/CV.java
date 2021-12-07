@@ -1,16 +1,17 @@
 package com.main.cvtheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cvs")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CV {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +21,11 @@ public class CV {
     private String cvFileName;
 
     //header
-    @OneToOne(fetch = FetchType.LAZY)
+    /*@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="header_id")
+    private Header header;*/
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "cv")
     private Header header;
 
     //client
@@ -29,15 +33,9 @@ public class CV {
     @JoinColumn(name="client_id")
     private Client client;*/
 
-    //skills
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(name = "cv_skills",
-            joinColumns = { @JoinColumn(name = "cv_id") },
-            inverseJoinColumns = { @JoinColumn(name = "skill_id") })
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "cv")
     private List<Skill> skills = new ArrayList<>();
 
     //experience
@@ -79,5 +77,13 @@ public class CV {
 
     public void setCvFileName(String cvFileName) {
         this.cvFileName = cvFileName;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
     }
 }

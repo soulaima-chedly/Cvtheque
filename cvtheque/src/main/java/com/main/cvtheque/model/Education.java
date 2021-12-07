@@ -22,10 +22,10 @@ public class Education {
     private String degreeName;
 
     @NotNull
-    private Date begningDate;
+    private String beginningDate;
 
     @NotNull
-    private Date endingDate;
+    private String endingDate;
 
     //CV
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -34,11 +34,13 @@ public class Education {
     @JsonIgnore
     private CV cv;
 
-    public Education(Long id, String schoolName, String degreeName, Date begningDate, Date endingDate) {
+    public Education() {}
+
+    public Education(Long id, String schoolName, String degreeName, String beginningDate, String endingDate) {
         this.id = id;
         this.schoolName = schoolName;
         this.degreeName = degreeName;
-        this.begningDate = begningDate;
+        this.beginningDate = beginningDate;
         this.endingDate = endingDate;
     }
 
@@ -54,12 +56,20 @@ public class Education {
         return degreeName;
     }
 
-    public Date getBegningDate() {
-        return begningDate;
+    public String getBeginningDate() {
+        return beginningDate;
     }
 
-    public Date getEndingDate() {
+    public void setBeginningDate(String beginningDate) {
+        this.beginningDate = beginningDate;
+    }
+
+    public String getEndingDate() {
         return endingDate;
+    }
+
+    public void setEndingDate(String endingDate) {
+        this.endingDate = endingDate;
     }
 
     public void setSchoolName(String schoolName) {
@@ -68,14 +78,6 @@ public class Education {
 
     public void setDegreeName(String degreeName) {
         this.degreeName = degreeName;
-    }
-
-    public void setBegningDate(Date begningDate) {
-        this.begningDate = begningDate;
-    }
-
-    public void setEndingDate(Date endingDate) {
-        this.endingDate = endingDate;
     }
 
     public CV getCv() {

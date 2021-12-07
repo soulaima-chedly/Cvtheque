@@ -24,8 +24,14 @@ public class Header {
     private String phoneNumber;
 
     //CV
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "header")
+    /*@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "header")
+    private CV cv;*/
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="cv_id")
     private CV cv;
+
+    public Header() {}
 
     public Header(Long id, String fullName, String domain, String email, String phoneNumber) {
         this.id = id;

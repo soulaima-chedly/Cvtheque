@@ -6,6 +6,8 @@ import com.main.cvtheque.repository.CVRepository;
 import com.main.cvtheque.repository.HeaderRepository;
 import com.main.cvtheque.service.HeaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service

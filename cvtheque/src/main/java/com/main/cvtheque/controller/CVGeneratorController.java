@@ -1,6 +1,7 @@
 package com.main.cvtheque.controller;
 
 import com.main.cvtheque.model.CV;
+import com.main.cvtheque.repository.CVRepository;
 import com.main.cvtheque.service.CVGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,9 @@ public class CVGeneratorController {
     @Autowired
     private CVGeneratorService cvGeneratorService;
 
+    @Autowired
+    private CVRepository cvRepository;
+
     @GetMapping("/cvs")
     public Page<CV> getAllCVs(Pageable pageable) {
         return cvGeneratorService.getAllGeneratedCV(pageable);
@@ -26,5 +30,10 @@ public class CVGeneratorController {
     @PostMapping("/cv")
     public CV generateCV(@Valid @RequestBody CV cv) {
         return cvGeneratorService.createGeneratedCV(cv);
+    }
+
+    @GetMapping("/cv/{cvId}")
+    public CV getCVById(@PathVariable (value = "cvId") Long cvId) {
+        return cvRepository.getById(cvId);
     }
 }

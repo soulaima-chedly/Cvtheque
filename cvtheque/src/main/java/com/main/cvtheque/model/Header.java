@@ -1,6 +1,9 @@
 package com.main.cvtheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -27,8 +30,10 @@ public class Header {
     /*@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "header")
     private CV cv;*/
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="cv_id")
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="cv_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private CV cv;
 
     public Header() {}

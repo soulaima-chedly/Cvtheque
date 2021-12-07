@@ -86,4 +86,36 @@ public class CV {
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public void setHeader(Header header) {
+        this.header = header;
+    }
+
+    public List<WorkExperience> getWorkExperiences() {
+        return workExperiences;
+    }
+
+    public void setWorkExperiences(List<WorkExperience> workExperiences) {
+        this.workExperiences = workExperiences;
+    }
+
+    public List<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
+    }
+
+    public List<Entreprise> getEntreprises() {
+        return entreprises;
+    }
+
+    public void setEntreprises(List<Entreprise> entreprises) {
+        this.entreprises = entreprises;
+    }
 }

@@ -1,3 +1,4 @@
+/*
 package com.main.cvtheque.model;
 
 import com.sun.istack.NotNull;
@@ -54,3 +55,4 @@ public class Entreprise extends User {
         this.domain = domain;
     }
 }
+*/

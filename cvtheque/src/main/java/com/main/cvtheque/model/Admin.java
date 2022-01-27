@@ -1,3 +1,4 @@
+/*
 package com.main.cvtheque.model;
 
 import javax.persistence.*;
@@ -17,3 +18,4 @@ public class Admin extends User{
         return id;
     }
 }
+*/

@@ -12,6 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,7 +58,8 @@ public class CVController {
     }
 
     @PostMapping(value = "/uploadCVFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity handleCVFileUpload(@RequestParam("cv") MultipartFile cv) {
+    public ResponseEntity handleCVFileUpload(
+                                             @RequestParam("cv") MultipartFile cv) {
         cvService.store(cv);
         logger.info(String.format("CV File name '%s' uploaded successfully.", cv.getOriginalFilename()));
         return ResponseEntity.ok().build();

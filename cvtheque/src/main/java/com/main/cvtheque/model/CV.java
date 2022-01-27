@@ -51,13 +51,13 @@ public class CV {
     private List<Education> educations = new ArrayList<>();
 
     //entreprises
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "cvs")
-    private List<Entreprise> entreprises = new ArrayList<>();
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            },
+//            mappedBy = "cvs")
+//    private List<Entreprise> entreprises = new ArrayList<>();
 
     public CV() { }
 
@@ -111,11 +111,11 @@ public class CV {
         this.educations = educations;
     }
 
-    public List<Entreprise> getEntreprises() {
-        return entreprises;
-    }
-
-    public void setEntreprises(List<Entreprise> entreprises) {
-        this.entreprises = entreprises;
-    }
+//    public List<Entreprise> getEntreprises() {
+//        return entreprises;
+//    }
+//
+//    public void setEntreprises(List<Entreprise> entreprises) {
+//        this.entreprises = entreprises;
+//    }
 }

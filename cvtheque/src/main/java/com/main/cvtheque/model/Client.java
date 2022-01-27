@@ -1,3 +1,4 @@
+/*
 package com.main.cvtheque.model;
 
 import com.sun.istack.NotNull;
@@ -18,8 +19,13 @@ public class Client extends User {
     private int age;
 
     //CV
-    /*@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "client")
-    private CV cv;*/
+    */
+/*@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "client")
+    private CV cv;*//*
+
+
+    @OneToOne(fetch = FetchType.LAZY, cascade= CascadeType.ALL, mappedBy = "client")
+    private Role role;
 
     public Client(String name, String email, String password) {
         super(name, email, password);
@@ -45,3 +51,4 @@ public class Client extends User {
         this.age = age;
     }
 }
+*/
